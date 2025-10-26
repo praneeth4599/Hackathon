@@ -28,7 +28,7 @@ class AuditLog(models.Model):
     action = models.CharField(max_length=50, choices=ACTION_CHOICES)
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     user_agent = models.TextField(blank=True, null=True)
-    details = models.JSONField(default=dict, blank=True)
+    details = models.TextField(blank=True, null=True)  # Changed from JSONField for SQLite compatibility
     status = models.CharField(max_length=20, default='success')
     timestamp = models.DateTimeField(auto_now_add=True)
 
