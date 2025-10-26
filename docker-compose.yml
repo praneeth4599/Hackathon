@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   backend:
     build: .
-    command: sh -c "cd backend && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "cd backend && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
@@ -28,8 +26,7 @@ services:
       - POSTGRES_DB=hackathon_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
+    # No external port mapping needed - backend accesses via internal network
 
 volumes:
   postgres_data:
