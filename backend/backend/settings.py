@@ -32,6 +32,10 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+# Always allow Render.com domains in production
+if os.getenv('RENDER'):
+    ALLOWED_HOSTS.append('.onrender.com')
+
 
 # Application definition
 
